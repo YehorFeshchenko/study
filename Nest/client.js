@@ -1,17 +1,29 @@
 const http = require('http');
 
+const data = JSON.stringify({
+    firstName: "Low",
+    lastName: "Skill",
+    phoneNumber: 4444444444,
+    isActive: true,
+});
+
 const options = {
     port: 3000,
-    path: '/',
-    method: 'GET'
+    path: '/contacts/post',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+    }
 };
 
-let counter = 0;
+/*let makeRequest = async function () {
+    let data = '';
 
-let makeRequest = async function () {
     const request = http.request(options, (response) => {
         response.on('data', (d) => {
-            process.stdout.write(d);
+            //process.stdout.write(d);
+            data += d;
         })
     });
 
@@ -19,13 +31,31 @@ let makeRequest = async function () {
         console.log(err);
     });
 
+    request.write(data);
     request.end();
     await new Promise((resolve, reject) => {
         resolve(console.log('done'));
     });
 }
 
-for (var i = 0; i < 3; i++) {
-    makeRequest();
-    console.log(counter++);
-}
+makeRequest();*/ 
+
+const req = http.request(options, (res) => {
+    let data = '';
+
+    console.log('Status Code:', res.statusCode);
+
+    res.on('data', (chunk) => {
+        data += chunk;
+    });
+
+    res.on('end', () => {
+        console.log('Body: ', JSON.parse(data));
+    });
+
+}).on("error", (err) => {
+    console.log("Error: ", err.message);
+});
+
+req.write(data);
+req.end();

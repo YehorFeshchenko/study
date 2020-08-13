@@ -21,6 +21,7 @@ let ContactsController = class ContactsController {
         this.contactsService = contactsService;
     }
     create(createContactDto) {
+        console.log(createContactDto.firstName);
         return this.contactsService.insert(createContactDto);
     }
     findAll() {

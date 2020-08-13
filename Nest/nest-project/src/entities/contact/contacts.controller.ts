@@ -9,6 +9,7 @@ export class ContactsController {
 
   @Post('post')
   create(@Body() createContactDto: CreateContactDto): Promise<Contact> {
+    console.log(createContactDto.firstName);
     return this.contactsService.insert(createContactDto);
   }
 

@@ -2472,32 +2472,32 @@
         "affectsGlobalScope": false
       },
       "../src/entities/contact/contact.entity.ts": {
-        "version": "f2b89b537fae6dcb54ed9257d9c998dde7102e42d4c33ffc24f1f612c7b018a0",
+        "version": "c3ed00ec0e807589ec973f33e90eb9d89f8f6f143c624149cac915a3ad683f5c",
         "signature": "8bf9731525f9e9439ff88a76f54cc963096ff2c6e94ed9388edd0746ac4ac13b",
         "affectsGlobalScope": false
       },
       "../src/dto/create-contact.dto.ts": {
-        "version": "12bc0f502c55c40a48239ed2807690d52b0631efea55fcd62a935e9e8db717a2",
+        "version": "b5b1114050f69a1feef3ab94b2504492e5d53651d8a9e2292603cc63452cbd4e",
         "signature": "7191a5f2ebda17e1ce7c240d1d81248dbebb1304086053425d5055d421e95316",
         "affectsGlobalScope": false
       },
       "../src/entities/contact/contacts.service.ts": {
-        "version": "e30402b864d380858b90bf38ed0707cfd9101b067c79ddc9fc2947ac741572bf",
+        "version": "e59777240a350a11d3534049e6e80d50d39b9802c6b71439e2c54e2fb9438e90",
         "signature": "b26c5dde764c654b47b0e616b2f2a7fa62f901fc99f0fd2bc022f02702e6d86f",
         "affectsGlobalScope": false
       },
       "../src/entities/contact/contacts.controller.ts": {
-        "version": "20a8b4ba16c7215d47e1b843ed6e56be1a2e23c167ada78ce3eaf79620c97dec",
+        "version": "75a2cd71c2df770c887503208553361f642114dd331ff7d59c59ba694cdb56a8",
         "signature": "d7388b7585d3a21b9d79705842664c3d73603febe820892afbd9f4295e19de24",
         "affectsGlobalScope": false
       },
       "../src/entities/contact/contacts.module.ts": {
-        "version": "98158077623ac3667963ab8b1f9ab382170574e2a5e07030191e2b80b505c30a",
+        "version": "7c4f6e7d5955574c309971a51c208361d651903ab8b8560c66ce91339f2a7b43",
         "signature": "aac436878a9c068e3df1193952ed08f43805c2aad5ec3e08daeb9658a99e3a76",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "54ee4dd7a4f9ddf236fe8fc4c18bca833bf712e7b903c60e3d39b868bdca407d",
+        "version": "31f54b724ba3ac77fee506a205a30c153ac7f9d768dd385fbc5461a708954f6b",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
