@@ -21,21 +21,27 @@ let ContactsController = class ContactsController {
         this.contactsService = contactsService;
     }
     create(createContactDto) {
-        console.log(createContactDto.firstName);
         return this.contactsService.insert(createContactDto);
     }
     findAll() {
         return this.contactsService.findAll();
     }
-    findOne(id) {
-        return this.contactsService.findOne(id);
+    find_by_id(res, id) {
+        const contact = this.contactsService.findOne(id);
+        return res.render(this.contactsService.getViewName(), { message: 'Hello world!',
+            contact_first_name: contact.then(function (contact_new) {
+                return contact_new.firstName;
+            }).catch(function (reason) {
+                return reason;
+            }),
+        });
     }
     remove(id) {
         return this.contactsService.remove(id);
     }
 };
 __decorate([
-    common_1.Post('post'),
+    common_1.Post('create'),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_contact_dto_1.default]),
@@ -49,11 +55,11 @@ __decorate([
 ], ContactsController.prototype, "findAll", null);
 __decorate([
     common_1.Get(':id'),
-    __param(0, common_1.Param('id')),
+    __param(0, common_1.Res()), __param(1, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], ContactsController.prototype, "findOne", null);
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", void 0)
+], ContactsController.prototype, "find_by_id", null);
 __decorate([
     common_1.Delete(':id'),
     __param(0, common_1.Param('id')),

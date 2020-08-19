@@ -12,6 +12,9 @@ let AppService = class AppService {
     getHello() {
         return 'Hello World!';
     }
+    getViewName() {
+        return 'index';
+    }
 };
 AppService = __decorate([
     common_1.Injectable()
