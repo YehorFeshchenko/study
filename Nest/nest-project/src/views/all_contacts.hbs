@@ -3,28 +3,22 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Contact by id</title>
+    <title>All contacts</title>
 </head>
 
 <body>
-    {{#if hasContact}}
     <li>
-        <label for="first_name">First Name:<b>{{ firstName }}</b></label>
+        <label for="first_name">All contacts' First Names:</label>
     </li>
-    <li>
-        <label for="last_name">Last Name:<b>{{ lastName }}</b></label>
-    </li>
-    <li>
-        <label for="phone">Phone number: <b>{{ phoneNumber }}</b></label>
-    </li>
-    <li>
-        <label for="isActive">isActive: <b>{{ isActive }}</b></label>
-    </li>
-    {{else}}
-    <li>
-        <label for="error"><b>No contact found with current id!</b></label>
-    </li>
-    {{/if}}
+    <ul class="contactsList">
+        {{#each contactsList as |item|}}
+        {{#with item}}
+        <li>{{item.firstName}} {{item.lastName}}</li>
+        {{/with}}
+        {{else}}
+        <li>No contacts found!</li>
+        {{/each}}
+    </ul>
 </body>
 
 <style>

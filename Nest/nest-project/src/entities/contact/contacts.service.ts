@@ -11,10 +11,6 @@ export class ContactsService {
     private contactsRepository: Repository<Contact>,
   ) { }
 
-  getViewName(): string {
-    return 'contact_by_id';
-  }
-
   findAll(): Promise<Contact[]> {
     return this.contactsRepository.find();
   }

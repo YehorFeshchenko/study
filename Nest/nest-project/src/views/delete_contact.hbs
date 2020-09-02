@@ -3,22 +3,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Contact by id</title>
+    <title>Deleting contact by id</title>
 </head>
 
 <body>
     {{#if hasContact}}
     <li>
-        <label for="first_name">First Name:<b>{{ firstName }}</b></label>
-    </li>
-    <li>
-        <label for="last_name">Last Name:<b>{{ lastName }}</b></label>
-    </li>
-    <li>
-        <label for="phone">Phone number: <b>{{ phoneNumber }}</b></label>
-    </li>
-    <li>
-        <label for="isActive">isActive: <b>{{ isActive }}</b></label>
+        <label for="first_name">First Name:<b>{{ firstName }}</b> successfully deleted!</label>
     </li>
     {{else}}
     <li>

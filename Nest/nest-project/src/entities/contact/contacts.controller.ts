@@ -1,47 +1,57 @@
-import { Body, Controller, Delete, Get, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Res, Render } from '@nestjs/common';
 import CreateContactDto from "../../dto/create-contact.dto";
 import Contact from './contact.entity';
 import { ContactsService } from './contacts.service';
 import { Response } from 'express';
-import { identity } from 'rxjs';
+import { identity, async } from 'rxjs';
+import { create } from 'domain';
+
+let handleMessage = function (contact) {
+  let hasContact = true;
+  if (typeof contact === 'undefined') {
+    hasContact = false;
+    return { hasContact: hasContact }
+  }
+  else {
+    return {
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      phoneNumber: contact.phoneNumber,
+      isActive: contact.isActive,
+      hasContact: hasContact,
+    }
+  }
+}
 
 @Controller('contacts')
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) { }
 
   @Post('create')
-  create(@Body() createContactDto: CreateContactDto): Promise<Contact> {
-    return this.contactsService.insert(createContactDto);
+  //@Render('create_contact')
+  async create(@Body() createContactDto: CreateContactDto): Promise<Contact> {
+    return await this.contactsService.insert(createContactDto);
   }
 
   @Get()
-  findAll(): Promise<Contact[]> {
-    return this.contactsService.findAll();
+  @Render('all_contacts')
+  async findAll() {
+    const contacts = await this.contactsService.findAll();
+    return { contactsList: contacts }
   }
-
-  /*@Get(':id')
-  findOne(@Param('id') id: string): Promise<Contact> {
-    return this.contactsService.findOne(id);
-  }*/
 
   @Get(':id')
-  find_by_id(@Res() res: Response, @Param('id') id: string) {
-    const contact: Promise<Contact> = this.contactsService.findOne(id);
-    return res.render(
-      this.contactsService.getViewName(),
-      {
-        message: 'Hello world!',
-        contact_first_name: contact.then(function (contact_new) {
-          return contact_new.firstName;
-        }).catch(function (reason) {
-          return reason;
-        }),
-      },
-    );
+  @Render('contact_by_id')
+  async find_by_id(@Param('id') id: string) {
+    const contact = await this.contactsService.findOne(id);
+    return handleMessage(contact);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
-    return this.contactsService.remove(id);
+  @Delete('delete/:id')
+  @Render('delete_contact')
+  async remove(@Param('id') id: string) {
+    const contact = await this.contactsService.findOne(id);
+    await this.contactsService.remove(id);
+    return handleMessage(contact);
   }
 }

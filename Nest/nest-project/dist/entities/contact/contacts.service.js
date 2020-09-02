@@ -21,9 +21,6 @@ let ContactsService = class ContactsService {
     constructor(contactsRepository) {
         this.contactsRepository = contactsRepository;
     }
-    getViewName() {
-        return 'contact_by_id';
-    }
     findAll() {
         return this.contactsRepository.find();
     }

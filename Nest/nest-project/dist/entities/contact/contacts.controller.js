@@ -16,28 +16,41 @@ exports.ContactsController = void 0;
 const common_1 = require("@nestjs/common");
 const create_contact_dto_1 = require("../../dto/create-contact.dto");
 const contacts_service_1 = require("./contacts.service");
+let handleMessage = function (contact) {
+    let hasContact = true;
+    if (typeof contact === 'undefined') {
+        hasContact = false;
+        return { hasContact: hasContact };
+    }
+    else {
+        return {
+            firstName: contact.firstName,
+            lastName: contact.lastName,
+            phoneNumber: contact.phoneNumber,
+            isActive: contact.isActive,
+            hasContact: hasContact,
+        };
+    }
+};
 let ContactsController = class ContactsController {
     constructor(contactsService) {
         this.contactsService = contactsService;
     }
-    create(createContactDto) {
-        return this.contactsService.insert(createContactDto);
+    async create(createContactDto) {
+        return await this.contactsService.insert(createContactDto);
     }
-    findAll() {
-        return this.contactsService.findAll();
+    async findAll() {
+        const contacts = await this.contactsService.findAll();
+        return { contactsList: contacts };
     }
-    find_by_id(res, id) {
-        const contact = this.contactsService.findOne(id);
-        return res.render(this.contactsService.getViewName(), { message: 'Hello world!',
-            contact_first_name: contact.then(function (contact_new) {
-                return contact_new.firstName;
-            }).catch(function (reason) {
-                return reason;
-            }),
-        });
+    async find_by_id(id) {
+        const contact = await this.contactsService.findOne(id);
+        return handleMessage(contact);
     }
-    remove(id) {
-        return this.contactsService.remove(id);
+    async remove(id) {
+        const contact = await this.contactsService.findOne(id);
+        await this.contactsService.remove(id);
+        return handleMessage(contact);
     }
 };
 __decorate([
@@ -49,19 +62,22 @@ __decorate([
 ], ContactsController.prototype, "create", null);
 __decorate([
     common_1.Get(),
+    common_1.Render('all_contacts'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ContactsController.prototype, "findAll", null);
 __decorate([
     common_1.Get(':id'),
-    __param(0, common_1.Res()), __param(1, common_1.Param('id')),
+    common_1.Render('contact_by_id'),
+    __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
 ], ContactsController.prototype, "find_by_id", null);
 __decorate([
-    common_1.Delete(':id'),
+    common_1.Delete('delete/:id'),
+    common_1.Render('delete_contact'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
