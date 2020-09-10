@@ -36,12 +36,14 @@ let ContactsController = class ContactsController {
     constructor(contactsService) {
         this.contactsService = contactsService;
     }
+    async findAll() {
+        console.log("Ok");
+        const contacts = await this.contactsService.findAll();
+        console.log(contacts[1].firstName);
+        return { contactsList: contacts };
+    }
     async create(createContactDto) {
         return await this.contactsService.insert(createContactDto);
-    }
-    async findAll() {
-        const contacts = await this.contactsService.findAll();
-        return { contactsList: contacts };
     }
     async find_by_id(id) {
         const contact = await this.contactsService.findOne(id);
@@ -54,8 +56,15 @@ let ContactsController = class ContactsController {
     }
 };
 __decorate([
+    common_1.Get(),
+    common_1.Render('contacts/all_contacts'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], ContactsController.prototype, "findAll", null);
+__decorate([
     common_1.Post('create'),
-    common_1.Render('create_contact'),
+    common_1.Render('contacts/create_contact'),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_contact_dto_1.default]),
@@ -63,16 +72,9 @@ __decorate([
 ], ContactsController.prototype, "create", null);
 __decorate([
     common_1.Get('create'),
-    common_1.Render('create_contact'),
-    common_1.Get(),
-    common_1.Render('all_contacts'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], ContactsController.prototype, "findAll", null);
-__decorate([
+    common_1.Render('contacts/create_contact'),
     common_1.Get(':id'),
-    common_1.Render('contact_by_id'),
+    common_1.Render('contacts/contact_by_id'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -80,7 +82,7 @@ __decorate([
 ], ContactsController.prototype, "find_by_id", null);
 __decorate([
     common_1.Delete('delete/:id'),
-    common_1.Render('delete_contact'),
+    common_1.Render('contacts/delete_contact'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

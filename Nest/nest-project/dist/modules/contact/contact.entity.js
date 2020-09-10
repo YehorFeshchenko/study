@@ -9,25 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
-const common_1 = require("@nestjs/common");
-const app_service_1 = require("./app.service");
-let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
-    }
-    async root() { }
+const typeorm_1 = require("typeorm");
+let Contact = class Contact extends typeorm_1.BaseEntity {
 };
 __decorate([
-    common_1.Get(),
-    common_1.Render('main/index'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], AppController.prototype, "root", null);
-AppController = __decorate([
-    common_1.Controller(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
-], AppController);
-exports.AppController = AppController;
-//# sourceMappingURL=app.controller.js.map
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
+], Contact.prototype, "id", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Contact.prototype, "firstName", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Contact.prototype, "lastName", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Contact.prototype, "phoneNumber", void 0);
+__decorate([
+    typeorm_1.Column({ default: true }),
+    __metadata("design:type", Boolean)
+], Contact.prototype, "isActive", void 0);
+Contact = __decorate([
+    typeorm_1.Entity()
+], Contact);
+exports.default = Contact;
+//# sourceMappingURL=contact.entity.js.map

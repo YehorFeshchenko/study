@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>All contacts</title>
+</head>
+
+<body>
+    <li>
+        <label for="first_name">All contacts' First Names:</label>
+    </li>
+    <ul class="contactsList">
+        {{#each contactsList as |item|}}
+        {{#with item}}
+        <li>{{item.firstName}} {{item.lastName}}</li>
+        {{/with}}
+        {{else}}
+        <li>No contacts found!</li>
+        {{/each}}
+    </ul>
+</body>
+
+</html>

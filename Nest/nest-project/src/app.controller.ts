@@ -6,11 +6,7 @@ import { Response } from 'express';
 export class AppController {
   constructor(private appService: AppService) { }
   @Get()
-  root(@Res() res: Response) {
-    return res.render(
-      this.appService.getViewName(),
-      { message: 'Hello world!' },
-    );
-  }
+  @Render('main/index')
+  async root() { }
 }
 

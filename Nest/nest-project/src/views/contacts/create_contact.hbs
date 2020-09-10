@@ -1,26 +1,37 @@
 <!DOCTYPE html>
+
 <html>
+<form action="http://localhost:3000/contacts/create" method="POST">
 
-<head>
-    <meta charset="utf-8" />
-    <title>All contacts</title>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Creating contact</title>
+    </head>
 
-<body>
-    <li>
-        <label for="first_name">All contacts' First Names:</label>
-    </li>
-    <ul class="contactsList">
-        {{#each contactsList as |item|}}
-        {{#with item}}
-        <li>{{item.firstName}} {{item.lastName}}</li>
-        {{/with}}
-        {{else}}
-        <li>No contacts found!</li>
-        {{/each}}
-    </ul>
-</body>
-
+    <body>
+        <ul>
+            <li>
+                <label for="first_name">First Name:</label>
+                <input type="text" id="firstName" name="firstName" />
+            </li>
+            <li>
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" />
+            </li>
+            <li>
+                <label for="phone">Phone:</label>
+                <input id="phoneNumber" type="number" name="phoneNumber"></input>
+            </li>
+            <li>
+                <label for="isActive">isActive:</label>
+                <input id="isActive" type="boolean" name="isActive"></input>
+            </li>
+            <li class="button">
+                <button type="submit">Save the contact</button>
+            </li>
+        </ul>
+    </body>
+</form>
 <style>
     form {
         /* Center the form on the page */
@@ -28,7 +39,7 @@
         width: 400px;
         /* Form outline */
         padding: 1em;
-        /*border: 1px solid #CCC;*/
+        border: 1px solid #CCC;
         border-radius: 1em;
     }
 

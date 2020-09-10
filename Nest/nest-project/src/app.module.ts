@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import Contact from './entities/contact/contact.entity';
-import { ContactsModule } from './entities/contact/contacts.module'
+import Contact from './modules/contact/contact.entity';
+import { ContactsModule } from './modules/contact/contacts.module'
 
 @Module({
   imports: [ContactsModule,

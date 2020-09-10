@@ -1157,8 +1157,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.service.ts": {
-        "version": "5bb3e323868c82b510b77030c77317b2539c98108262dfe349761c7460f4cf06",
-        "signature": "500718cb4ca9cf1fcdc1277c4aefc89d5350cac13f8601af7d7b7cc392b5d724",
+        "version": "cfd559f375da0c91e24ba076e305b47f152d99ced79c1f51883e6e4c98e46d93",
+        "signature": "2386daedc1c47a9fb94925195a2ac3be1781c27d2920d676d81d8ef4d82fe4a3",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/node/globals.d.ts": {
@@ -1452,8 +1452,8 @@
         "affectsGlobalScope": false
       },
       "../src/app.controller.ts": {
-        "version": "ce54f886ceac7c769106878e130ce26bbb8fd27fbc19337bef3f4959ed4c6d68",
-        "signature": "a555ece4f8cac2b11673b1390bd5deeda03c2625ff7a74382456d50fa093d2ce",
+        "version": "fa9ec657a986dd5eb43189c1d001f920074545c119e3f1fdf23722d9644284eb",
+        "signature": "de9f34aa667d11608fd33d58830815172470b3e2f09ad5565e68b36498a504d4",
         "affectsGlobalScope": false
       },
       "../node_modules/typeorm/schema-builder/options/tablecolumnoptions.d.ts": {
@@ -2761,7 +2761,7 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
-      "../src/entities/contact/contact.entity.ts": {
+      "../src/modules/contact/contact.entity.ts": {
         "version": "c3ed00ec0e807589ec973f33e90eb9d89f8f6f143c624149cac915a3ad683f5c",
         "signature": "8bf9731525f9e9439ff88a76f54cc963096ff2c6e94ed9388edd0746ac4ac13b",
         "affectsGlobalScope": false
@@ -2771,23 +2771,23 @@
         "signature": "7191a5f2ebda17e1ce7c240d1d81248dbebb1304086053425d5055d421e95316",
         "affectsGlobalScope": false
       },
-      "../src/entities/contact/contacts.service.ts": {
-        "version": "e59777240a350a11d3534049e6e80d50d39b9802c6b71439e2c54e2fb9438e90",
-        "signature": "b26c5dde764c654b47b0e616b2f2a7fa62f901fc99f0fd2bc022f02702e6d86f",
+      "../src/modules/contact/contacts.service.ts": {
+        "version": "fa7a5fc3e7593034f29b3e18f407c33f67bd4174c7310dc818795d68355290d0",
+        "signature": "e865b8d59c1be7faf7ca7d3d88a253c739ae1be72053beba652645d477b908bd",
         "affectsGlobalScope": false
       },
-      "../src/entities/contact/contacts.controller.ts": {
-        "version": "0931d8e55a8465df1cd7f1a6bd683b07ac9bf652163028fc97b7a279ee2e9cf3",
-        "signature": "56ad5bf169cce26b112ef06ca930a9716727e4f9f86796f2e4d8dc114ef7cca9",
+      "../src/modules/contact/contacts.controller.ts": {
+        "version": "fc43149232d0f384902fe06caf2d59332857841d2be8ac29669c28ceeb8604fc",
+        "signature": "badebb8cf5f2bfaae3177cb2d28369e5b3425d94fe581df19651643ae8f05625",
         "affectsGlobalScope": false
       },
-      "../src/entities/contact/contacts.module.ts": {
+      "../src/modules/contact/contacts.module.ts": {
         "version": "7c4f6e7d5955574c309971a51c208361d651903ab8b8560c66ce91339f2a7b43",
         "signature": "aac436878a9c068e3df1193952ed08f43805c2aad5ec3e08daeb9658a99e3a76",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "31f54b724ba3ac77fee506a205a30c153ac7f9d768dd385fbc5461a708954f6b",
+        "version": "a42ca4d1c1ea25c507b0bc80b775011bf319fa9b2297e013f1050dbde01fd3f5",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
@@ -3090,6 +3090,46 @@
         "version": "7df3163944694feeac63067632a8dc2e2dea1350119ec8b43df277af69198369",
         "signature": "7df3163944694feeac63067632a8dc2e2dea1350119ec8b43df277af69198369",
         "affectsGlobalScope": false
+      },
+      "../node_modules/@types/jquery/jquerystatic.d.ts": {
+        "version": "2a19c7dd007f71b9db87dba915e20d894dbdac8aa8fab5d1c3083a61f2316a5c",
+        "signature": "2a19c7dd007f71b9db87dba915e20d894dbdac8aa8fab5d1c3083a61f2316a5c",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/jquery/jquery.d.ts": {
+        "version": "c7e41611fca9dda55b40fdaabc0a2cb3b254517a8040515dcd7cb2bef67a065f",
+        "signature": "c7e41611fca9dda55b40fdaabc0a2cb3b254517a8040515dcd7cb2bef67a065f",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/jquery/misc.d.ts": {
+        "version": "b209302269a2eddff39d1b927cbf054c520b01c1bc35a6d48857bdb85caca497",
+        "signature": "b209302269a2eddff39d1b927cbf054c520b01c1bc35a6d48857bdb85caca497",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/jquery/legacy.d.ts": {
+        "version": "8c4a3355af2c490a8af67c4ec304e970424a15ef648a3c3fbb3ee6634461e2cc",
+        "signature": "8c4a3355af2c490a8af67c4ec304e970424a15ef648a3c3fbb3ee6634461e2cc",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@types/sizzle/index.d.ts": {
+        "version": "7ddac8a4ba398441cfd6d8a69380401378f122ee8cc2d848e6e32f4db2b6c876",
+        "signature": "7ddac8a4ba398441cfd6d8a69380401378f122ee8cc2d848e6e32f4db2b6c876",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/jquery/index.d.ts": {
+        "version": "83b41c4e728a2ebc360331cb09a235edf7fb3525ccabe8434ee0d9b61d4f4783",
+        "signature": "83b41c4e728a2ebc360331cb09a235edf7fb3525ccabe8434ee0d9b61d4f4783",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/popper.js/index.d.ts": {
+        "version": "1873db8f2261ba4f248bde3e5bb4c79b1fdc990315054e9604fce8f41ddd1587",
+        "signature": "1873db8f2261ba4f248bde3e5bb4c79b1fdc990315054e9604fce8f41ddd1587",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/bootstrap/index.d.ts": {
+        "version": "20226efa5db5ffbfee0b5fec6ddabccf65af17f96baf68f7a3f741a14f0d2680",
+        "signature": "20226efa5db5ffbfee0b5fec6ddabccf65af17f96baf68f7a3f741a14f0d2680",
+        "affectsGlobalScope": true
       },
       "../node_modules/@types/color-name/index.d.ts": {
         "version": "f0cb4b3ab88193e3e51e9e2622e4c375955003f1f81239d72c5b7a95415dad3e",
@@ -5125,6 +5165,15 @@
         "../node_modules/@types/node/ts3.7/index.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/@types/bootstrap/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/jquery/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/popper.js/index.d.ts"
+      ],
       "../node_modules/@types/color-name/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -5221,6 +5270,46 @@
       "../node_modules/@types/jest/ts3.2/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/jest/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/jquery/jquery.d.ts",
+        "../node_modules/@types/jquery/jquerystatic.d.ts",
+        "../node_modules/@types/jquery/legacy.d.ts",
+        "../node_modules/@types/jquery/misc.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/sizzle/index.d.ts"
+      ],
+      "../node_modules/@types/jquery/jquery.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/jquerystatic.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/legacy.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/misc.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
@@ -5737,6 +5826,13 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/@types/sizzle/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/@types/source-list-map/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -5890,6 +5986,13 @@
         "../node_modules/jest-diff/build/types.d.ts"
       ],
       "../node_modules/jest-diff/build/types.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/popper.js/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -9296,8 +9399,8 @@
         "../node_modules/@types/node/util.d.ts",
         "../src/app.controller.ts",
         "../src/app.service.ts",
-        "../src/entities/contact/contact.entity.ts",
-        "../src/entities/contact/contacts.module.ts"
+        "../src/modules/contact/contact.entity.ts",
+        "../src/modules/contact/contacts.module.ts"
       ],
       "../src/app.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -9314,52 +9417,6 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
-      "../src/entities/contact/contact.entity.ts": [
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/typeorm/index.d.ts"
-      ],
-      "../src/entities/contact/contacts.controller.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@types/express/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/domain.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/rxjs/index.d.ts",
-        "../src/dto/create-contact.dto.ts",
-        "../src/entities/contact/contact.entity.ts",
-        "../src/entities/contact/contacts.service.ts"
-      ],
-      "../src/entities/contact/contacts.module.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../src/entities/contact/contact.entity.ts",
-        "../src/entities/contact/contacts.controller.ts",
-        "../src/entities/contact/contacts.service.ts"
-      ],
-      "../src/entities/contact/contacts.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../node_modules/@types/graceful-fs/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/typeorm/index.d.ts",
-        "../src/dto/create-contact.dto.ts",
-        "../src/entities/contact/contact.entity.ts"
-      ],
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../node_modules/@nestjs/platform-express/index.d.ts",
@@ -9370,6 +9427,52 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../src/app.module.ts"
+      ],
+      "../src/modules/contact/contact.entity.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/typeorm/index.d.ts"
+      ],
+      "../src/modules/contact/contacts.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/domain.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/rxjs/index.d.ts",
+        "../src/dto/create-contact.dto.ts",
+        "../src/modules/contact/contact.entity.ts",
+        "../src/modules/contact/contacts.service.ts"
+      ],
+      "../src/modules/contact/contacts.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../src/modules/contact/contact.entity.ts",
+        "../src/modules/contact/contacts.controller.ts",
+        "../src/modules/contact/contacts.service.ts"
+      ],
+      "../src/modules/contact/contacts.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../src/dto/create-contact.dto.ts",
+        "../src/modules/contact/contact.entity.ts"
       ]
     },
     "exportedModulesMap": {
@@ -11216,6 +11319,15 @@
         "../node_modules/@types/node/ts3.7/index.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/@types/bootstrap/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/jquery/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/popper.js/index.d.ts"
+      ],
       "../node_modules/@types/color-name/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -11312,6 +11424,46 @@
       "../node_modules/@types/jest/ts3.2/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/jest/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/jquery/jquery.d.ts",
+        "../node_modules/@types/jquery/jquerystatic.d.ts",
+        "../node_modules/@types/jquery/legacy.d.ts",
+        "../node_modules/@types/jquery/misc.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/sizzle/index.d.ts"
+      ],
+      "../node_modules/@types/jquery/jquery.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/jquerystatic.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/legacy.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/@types/jquery/misc.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
@@ -11828,6 +11980,13 @@
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts"
       ],
+      "../node_modules/@types/sizzle/index.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
       "../node_modules/@types/source-list-map/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -11981,6 +12140,13 @@
         "../node_modules/jest-diff/build/types.d.ts"
       ],
       "../node_modules/jest-diff/build/types.d.ts": [
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts",
+        "../node_modules/@types/node/util.d.ts"
+      ],
+      "../node_modules/popper.js/index.d.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -15368,21 +15534,20 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../src/app.controller.ts": [
-        "../node_modules/@types/express/index.d.ts",
         "../src/app.service.ts"
       ],
-      "../src/entities/contact/contact.entity.ts": [
+      "../src/modules/contact/contact.entity.ts": [
         "../node_modules/typeorm/index.d.ts"
       ],
-      "../src/entities/contact/contacts.controller.ts": [
+      "../src/modules/contact/contacts.controller.ts": [
         "../src/dto/create-contact.dto.ts",
-        "../src/entities/contact/contact.entity.ts",
-        "../src/entities/contact/contacts.service.ts"
+        "../src/modules/contact/contact.entity.ts",
+        "../src/modules/contact/contacts.service.ts"
       ],
-      "../src/entities/contact/contacts.service.ts": [
+      "../src/modules/contact/contacts.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/dto/create-contact.dto.ts",
-        "../src/entities/contact/contact.entity.ts"
+        "../src/modules/contact/contact.entity.ts"
       ]
     },
     "semanticDiagnosticsPerFile": []

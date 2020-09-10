@@ -27,28 +27,31 @@ let handleMessage = function (contact) {
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) { }
 
-  @Post('create')
-  //@Render('create_contact')
-  async create(@Body() createContactDto: CreateContactDto): Promise<Contact> {
-    return await this.contactsService.insert(createContactDto);
-  }
-
   @Get()
-  @Render('all_contacts')
+  @Render('contacts/all_contacts')
   async findAll() {
     const contacts = await this.contactsService.findAll();
     return { contactsList: contacts }
   }
 
+  @Post('create')
+  @Render('contacts/create_contact')
+  async create(@Body() createContactDto: CreateContactDto): Promise<Contact> {
+    return await this.contactsService.insert(createContactDto);
+  }
+
+  @Get('create')
+  @Render('contacts/create_contact')
+
   @Get(':id')
-  @Render('contact_by_id')
+  @Render('contacts/contact_by_id')
   async find_by_id(@Param('id') id: string) {
     const contact = await this.contactsService.findOne(id);
     return handleMessage(contact);
   }
 
   @Delete('delete/:id')
-  @Render('delete_contact')
+  @Render('contacts/delete_contact')
   async remove(@Param('id') id: string) {
     const contact = await this.contactsService.findOne(id);
     await this.contactsService.remove(id);
