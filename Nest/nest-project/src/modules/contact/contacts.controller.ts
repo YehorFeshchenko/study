@@ -50,6 +50,9 @@ export class ContactsController {
     return handleMessage(contact);
   }
 
+  @Get('delete')
+  @Render('contacts/delete_contact')
+
   @Delete('delete/:id')
   @Render('contacts/delete_contact')
   async remove(@Param('id') id: string) {
