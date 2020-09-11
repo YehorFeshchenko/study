@@ -2777,7 +2777,7 @@
         "affectsGlobalScope": false
       },
       "../src/modules/contact/contacts.controller.ts": {
-        "version": "fc43149232d0f384902fe06caf2d59332857841d2be8ac29669c28ceeb8604fc",
+        "version": "39a0cdbed6b42df162d0394a37a35495846f15c389a62bb8a229b47cda68fb0b",
         "signature": "badebb8cf5f2bfaae3177cb2d28369e5b3425d94fe581df19651643ae8f05625",
         "affectsGlobalScope": false
       },

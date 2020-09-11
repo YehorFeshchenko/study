@@ -37,9 +37,7 @@ let ContactsController = class ContactsController {
         this.contactsService = contactsService;
     }
     async findAll() {
-        console.log("Ok");
         const contacts = await this.contactsService.findAll();
-        console.log(contacts[1].firstName);
         return { contactsList: contacts };
     }
     async create(createContactDto) {
