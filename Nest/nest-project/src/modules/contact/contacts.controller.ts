@@ -17,7 +17,9 @@ let handleMessage = function (contact) {
       firstName: contact.firstName,
       lastName: contact.lastName,
       phoneNumber: contact.phoneNumber,
-      isActive: contact.isActive,
+      address: contact.address,
+      username: contact.username,
+      email: contact.email,
       hasContact: hasContact,
     }
   }
@@ -40,15 +42,16 @@ export class ContactsController {
     return await this.contactsService.insert(createContactDto);
   }
 
-  @Get('create')
-  @Render('contacts/create_contact')
-
-  @Get(':id')
+  @Get('get/:id')
   @Render('contacts/contact_by_id')
   async find_by_id(@Param('id') id: string) {
     const contact = await this.contactsService.findOne(id);
     return handleMessage(contact);
   }
+
+  @Get('create')
+  @Render('contacts/create_contact')
+  creating() { }
 
   @Get('delete')
   @Render('contacts/delete_contact')

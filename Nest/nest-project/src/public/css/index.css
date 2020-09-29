@@ -1,0 +1,8 @@
+.view {
+    background: url("https://images.unsplash.com/photo-1508105859382-b487af436eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80")no-repeat center center;
+    background-size: cover;
+}
+
+html, body, header, .view {
+    height: 100%;
+}

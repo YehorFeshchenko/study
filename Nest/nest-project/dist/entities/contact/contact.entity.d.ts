@@ -4,5 +4,7 @@ export default class Contact extends BaseEntity {
     firstName: string;
     lastName: string;
     phoneNumber: number;
-    isActive: boolean;
+    email: string;
+    address: string;
+    username: string;
 }

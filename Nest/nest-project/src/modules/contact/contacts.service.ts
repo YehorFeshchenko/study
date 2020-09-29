@@ -21,11 +21,13 @@ export class ContactsService {
 
   async insert(contactDetails: CreateContactDto): Promise<Contact> {
     const contact: Contact = Contact.create();
-    const { firstName, lastName, phoneNumber, isActive } = contactDetails;
+    const { firstName, lastName, phoneNumber, address, username, email } = contactDetails;
     contact.firstName = firstName;
     contact.lastName = lastName;
     contact.phoneNumber = phoneNumber;
-    contact.isActive = isActive;
+    contact.address = address;
+    contact.email = email;
+    contact.username = username;
     await Contact.save(contact);
     return contact;
   }

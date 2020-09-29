@@ -2,19 +2,7 @@
 <html lang="en" class="full-height">
 
 <head>
-  <style type="text/css">
-    .view {
-      background: url("https://images.unsplash.com/photo-1508105859382-b487af436eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80")no-repeat center center;
-      background-size: cover;
-    }
 
-    html,
-    body,
-    header,
-    .view {
-      height: 100%;
-    }
-  </style>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,70 +10,34 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
   <title>Main page</title>
 </head>
 
 <body>
   <header>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#"><strong>Contacts</strong></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contacts">My list</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div id="header"></div>
 
     <div class="view intro-2">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
           <div class="container text-center wow fadeInUp">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <font color="#0BA2C1">
-              <h2>Tired of scrolling down tons of contacts and finding needed one? Try our service for free</h2>
-              <h5>All of your contacts in one place for quicker access. Easier to find - easier to manage!</h5>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <font color="#F08080">
+              <h2>Tired of scrolling down tons of contacts and finding needed one? Try our service for free
+              </h2>
+              <h5>All of your contacts in one place for quicker access. Easier to find - easier to manage!
+              </h5>
               <br>
             </font>
           </div>
         </div>
       </div>
     </div>
-
   </header>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
   <main class="text-center py-5">
 
@@ -112,18 +64,14 @@
 
   </main>
 
-  <footer class="page-footer bg-light">
-    <div class="container">
-      <p class="float-right">
-        <a href="#">Back to top</a>
-      </p>
-      <p>New to Contacts? <a href="#">Visit the homepage</a></p>
-    </div>
-
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="#">Contacts YF</a>
-    </div>
+  <footer>
+    <div id="footer"></div>
   </footer>
+
+  <script>
+    $("#header").load("header.html");
+    $("#footer").load("footer.html");
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

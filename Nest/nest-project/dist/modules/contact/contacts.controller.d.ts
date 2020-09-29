@@ -13,25 +13,34 @@ export declare class ContactsController {
         firstName?: undefined;
         lastName?: undefined;
         phoneNumber?: undefined;
-        isActive?: undefined;
+        address?: undefined;
+        username?: undefined;
+        email?: undefined;
     } | {
         firstName: any;
         lastName: any;
         phoneNumber: any;
-        isActive: any;
+        address: any;
+        username: any;
+        email: any;
         hasContact: boolean;
     }>;
+    creating(): void;
     remove(id: string): Promise<{
         hasContact: boolean;
         firstName?: undefined;
         lastName?: undefined;
         phoneNumber?: undefined;
-        isActive?: undefined;
+        address?: undefined;
+        username?: undefined;
+        email?: undefined;
     } | {
         firstName: any;
         lastName: any;
         phoneNumber: any;
-        isActive: any;
+        address: any;
+        username: any;
+        email: any;
         hasContact: boolean;
     }>;
 }

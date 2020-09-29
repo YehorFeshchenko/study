@@ -29,11 +29,13 @@ let ContactsService = class ContactsService {
     }
     async insert(contactDetails) {
         const contact = contact_entity_1.default.create();
-        const { firstName, lastName, phoneNumber, isActive } = contactDetails;
+        const { firstName, lastName, phoneNumber, address, username, email } = contactDetails;
         contact.firstName = firstName;
         contact.lastName = lastName;
         contact.phoneNumber = phoneNumber;
-        contact.isActive = isActive;
+        contact.address = address;
+        contact.email = email;
+        contact.username = username;
         await contact_entity_1.default.save(contact);
         return contact;
     }

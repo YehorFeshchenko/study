@@ -29,9 +29,17 @@ __decorate([
     __metadata("design:type", Number)
 ], Contact.prototype, "phoneNumber", void 0);
 __decorate([
-    typeorm_1.Column({ default: true }),
-    __metadata("design:type", Boolean)
-], Contact.prototype, "isActive", void 0);
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Contact.prototype, "email", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Contact.prototype, "address", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Contact.prototype, "username", void 0);
 Contact = __decorate([
     typeorm_1.Entity()
 ], Contact);

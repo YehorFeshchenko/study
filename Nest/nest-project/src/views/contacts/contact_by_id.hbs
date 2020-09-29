@@ -3,97 +3,55 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="contact_by_id.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
     <title>Contact by id</title>
 </head>
 
 <body>
-    {{#if hasContact}}
-    <li>
-        <label for="first_name">First Name:<b>{{ firstName }}</b></label>
-    </li>
-    <li>
-        <label for="last_name">Last Name:<b>{{ lastName }}</b></label>
-    </li>
-    <li>
-        <label for="phone">Phone number: <b>{{ phoneNumber }}</b></label>
-    </li>
-    <li>
-        <label for="isActive">isActive: <b>{{ isActive }}</b></label>
-    </li>
-    {{else}}
-    <li>
-        <label for="error"><b>No contact found with current id!</b></label>
-    </li>
-    {{/if}}
+    <header>
+        <div id="header"></div>
+    </header>
+
+    <main role="main">
+        {{#if hasContact}}
+        <div class="text-lg-left">First name: <b>{{ firstName }}</b></div>
+        <div class="text-lg-left">Last name: <b>{{ lastName }}</b></div>
+        <div class="text-lg-left">Email: <b>{{ email }}</b></div>
+        <div class="text-lg-left">Username: <b>{{ username }}</b></div>
+        <div class="text-lg-left">Phone number: <b>{{ phoneNumber }}</b></div>
+        <div class="text-lg-left">Address: <b>{{ address }}</b></div>
+        {{else}}
+        <div class="alert alert-primary" role="alert">
+            No contacts found!
+        </div>
+        {{/if}}
+    </main>
+
+    <footer>
+        <div id="footer"></div>
+    </footer>
+
+    <script>
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
-
-<style>
-    form {
-        /* Center the form on the page */
-        margin: 0 auto;
-        width: 400px;
-        /* Form outline */
-        padding: 1em;
-        /*border: 1px solid #CCC;*/
-        border-radius: 1em;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    form li+li {
-        margin-top: 1em;
-    }
-
-    label {
-        /* Uniform size & alignment */
-        display: inline-block;
-        width: 90px;
-        text-align: right;
-    }
-
-    input,
-    textarea {
-        /* To make sure that all text fields have the same font settings
-     By default, textareas have a monospace font */
-        font: 1em sans-serif;
-
-        /* Uniform text field size */
-        width: 300px;
-        box-sizing: border-box;
-
-        /* Match form field borders */
-        border: 1px solid #999;
-    }
-
-    input:focus,
-    textarea:focus {
-        /* Additional highlight for focused elements */
-        border-color: #000;
-    }
-
-    textarea {
-        /* Align multiline text fields with their labels */
-        vertical-align: top;
-
-        /* Provide space to type some text */
-        height: 5em;
-    }
-
-    .button {
-        /* Align buttons with the text fields */
-        padding-left: 90px;
-        /* same size as the label elements */
-    }
-
-    button {
-        /* This extra margin represent roughly the same space as the space
-     between the labels and their text fields */
-        margin-left: .5em;
-    }
-</style>
 
 </html>

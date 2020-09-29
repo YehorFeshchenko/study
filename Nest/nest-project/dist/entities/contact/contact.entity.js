@@ -35,5 +35,36 @@ __decorate([
 Contact = __decorate([
     typeorm_1.Entity()
 ], Contact);
+exports.default = Contact; __decorate([
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
+], Contact.prototype, "id", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Contact.prototype, "firstName", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Contact.prototype, "lastName", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Contact.prototype, "phoneNumber", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Contact.prototype, "email", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Contact.prototype, "address", void 0);
+__decorate([
+    typeorm_1.Column({ nullable: true }),
+    __metadata("design:type", String)
+], Contact.prototype, "username", void 0);
+Contact = __decorate([
+    typeorm_1.Entity()
+], Contact);
 exports.default = Contact;
 //# sourceMappingURL=contact.entity.js.map

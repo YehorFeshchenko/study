@@ -14,6 +14,12 @@ export default class Contact extends BaseEntity {
   @Column()
   phoneNumber: number;
 
-  @Column({ default: true })
-  isActive: boolean;
+  @Column({ nullable: true })
+  email: string;
+
+  @Column({ nullable: true })
+  address: string;
+
+  @Column({ nullable: true })
+  username: string;
 }

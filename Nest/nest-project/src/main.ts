@@ -8,6 +8,9 @@ declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(resolve('./src/public'));
+  app.useStaticAssets(resolve('./images'));
+  app.useStaticAssets(resolve('./src/public/css'));
+  app.useStaticAssets(resolve('./src/public/html'));
   app.setBaseViewsDir(resolve('./src/views'));
   app.setViewEngine('hbs');
   await app.listen(3000);

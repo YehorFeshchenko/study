@@ -27,7 +27,9 @@ let handleMessage = function (contact) {
             firstName: contact.firstName,
             lastName: contact.lastName,
             phoneNumber: contact.phoneNumber,
-            isActive: contact.isActive,
+            address: contact.address,
+            username: contact.username,
+            email: contact.email,
             hasContact: hasContact,
         };
     }
@@ -47,6 +49,7 @@ let ContactsController = class ContactsController {
         const contact = await this.contactsService.findOne(id);
         return handleMessage(contact);
     }
+    creating() { }
     async remove(id) {
         const contact = await this.contactsService.findOne(id);
         await this.contactsService.remove(id);
@@ -69,9 +72,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ContactsController.prototype, "create", null);
 __decorate([
-    common_1.Get('create'),
-    common_1.Render('contacts/create_contact'),
-    common_1.Get(':id'),
+    common_1.Get('get/:id'),
     common_1.Render('contacts/contact_by_id'),
     __param(0, common_1.Param('id')),
     __metadata("design:type", Function),
@@ -79,6 +80,15 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ContactsController.prototype, "find_by_id", null);
 __decorate([
+    common_1.Get('create'),
+    common_1.Render('contacts/create_contact'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ContactsController.prototype, "creating", null);
+__decorate([
+    common_1.Get('delete'),
+    common_1.Render('contacts/delete_contact'),
     common_1.Delete('delete/:id'),
     common_1.Render('contacts/delete_contact'),
     __param(0, common_1.Param('id')),
