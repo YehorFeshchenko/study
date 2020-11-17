@@ -21,3 +21,9 @@ async function bootstrap() {
   }
 }
 bootstrap();
+
+let input = "get/10"
+let x;
+if (input === 'get/${x}') {
+  console.log(x);
+}
