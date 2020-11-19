@@ -142,8 +142,6 @@ class GroupModel(BaseModel):
 
     def find_not_empty_groups_filter_users(self):
         request = 'SELECT * FROM "groups" WHERE "number of members" > 0 ORDER BY(SELECT COUNT(*) ' \
-                  '' \
-                  '' \
                   'FROM "user_groups" WHERE "user_groups".group_id = "groups".group_id) ASC'
         data = ()
         groups = list()
@@ -154,7 +152,7 @@ class GroupModel(BaseModel):
             finish = time.time()
             print("\nExecution time: " + str(finish - start))
             for item in temp:
-                groups.append(Group(item[0], item[1], item[2], item[3], item[4]))
+                groups.append(Group(item[0], item[1], item[2], item[3]))
         except (Exception, psycopg2.DatabaseError) as error:
             self.cursor.execute('ROLLBACK')
             print(error)

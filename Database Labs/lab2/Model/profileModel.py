@@ -56,7 +56,24 @@ class ProfileModel(BaseModel):
             print(error)
         return profile
 
+    def check_user(self, id):
+        try:
+            request = 'SELECT * FROM "users" WHERE user_id = %s'
+            data = (id,)
+            self.cursor.execute(request, data)
+            records = self.cursor.fetchall()
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        if records == []:
+            print("No user on this id")
+            return False
+        return True
+
     def add_entity(self, new_entity):
+        hasUser = self.check_user(new_entity.user_id)
+        if not hasUser:
+            return
         request = 'INSERT INTO profiles("nickname", "date of registration", "country", "user_id") ' \
                   'VALUES (%s , %s , %s, %s)'
         data = (new_entity.nickname, new_entity.date_of_registration, new_entity.country, new_entity.user_id)
@@ -111,7 +128,8 @@ class ProfileModel(BaseModel):
     def generate(self, number):
         request = 'INSERT INTO profiles(nickname, "date of registration", country, user_id) ' \
                   'SELECT MD5(random()::text), timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - ' \
-                  'timestamp \'1-1-1\'), MD5(random()::text), RANDOM() * (SELECT MAX(user_id) FROM "users") ' \
+                  'timestamp \'1-1-1\'), MD5(random()::text), ' \
+                  'trunc(random()*((SELECT MAX(user_id) FROM "users")-1)+1)::int '\
                   'FROM generate_series(1 , %s)'
         data = (number,)
         try:

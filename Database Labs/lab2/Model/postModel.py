@@ -56,7 +56,24 @@ class PostModel(BaseModel):
             print(error)
         return post
 
+    def check_profile(self, id):
+        try:
+            request = 'SELECT * FROM "profiles" WHERE profile_id = %s'
+            data = (id,)
+            self.cursor.execute(request, data)
+            records = self.cursor.fetchall()
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        if records == []:
+            print("No profile on this id")
+            return False
+        return True
+
     def add_entity(self, new_entity):
+        hasProfile = self.check_profile(new_entity.profile_id)
+        if not hasProfile:
+            return
         request = 'INSERT INTO posts("topic", "date of publishing", "owner", "profile_id") ' \
                   'VALUES (%s , %s , %s, %s)'
         data = (new_entity.topic, new_entity.date_of_publishing, new_entity.owner, new_entity.profile_id)
@@ -111,7 +128,8 @@ class PostModel(BaseModel):
     def generate(self, number):
         request = 'INSERT INTO posts(topic, "date of publishing", owner, profile_id) ' \
                   'SELECT MD5(random()::text), timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - ' \
-                  'timestamp \'1-1-1\'), MD5(random()::text), RANDOM() * (SELECT MAX(profile_id) FROM "profiles") ' \
+                  'timestamp \'1-1-1\'), MD5(random()::text), ' \
+                  'trunc(random()*((SELECT MAX(profile_id) FROM "profiles")-1)+1)::int ' \
                   'FROM generate_series(1 , %s)'
         data = (number,)
         try:
