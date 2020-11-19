@@ -45,11 +45,10 @@ class ProfileModel(BaseModel):
             return profiles
 
     def get_entity(self, entity_id):
-        request = 'SELECT * FROM profile WHERE profile_id = %s'
-        data = (entity_id,)
+        request = 'SELECT * FROM profiles WHERE profile_id = %s'
         profile = None
         try:
-            self.cursor.execute(request, data)
+            self.cursor.execute(request, (entity_id,))
             record = self.cursor.fetchone()
             profile = Profile(record[0], record[1], record[2], record[3], record[4])
         except (Exception, psycopg2.DatabaseError) as error:
@@ -60,7 +59,7 @@ class ProfileModel(BaseModel):
     def add_entity(self, new_entity):
         request = 'INSERT INTO profiles("nickname", "date of registration", "country", "user_id") ' \
                   'VALUES (%s , %s , %s, %s)'
-        data = (new_entity.first_name, new_entity.last_name, new_entity.age)
+        data = (new_entity.nickname, new_entity.date_of_registration, new_entity.country, new_entity.user_id)
         try:
             self.cursor.execute(request, data)
             self.conn.commit()
@@ -70,7 +69,7 @@ class ProfileModel(BaseModel):
 
     def update_entity(self, update_entity):
         request = 'UPDATE profiles SET "nickname"=%s, "date of registration"=%s, "country"=%s , "user_id"=%s ' \
-                  'WHERE user_id=%s'
+                  'WHERE profile_id=%s'
         data = (update_entity.nickname, update_entity.date_of_registration, update_entity.country,
                 update_entity.user_id, update_entity.id)
         try:
@@ -99,18 +98,21 @@ class ProfileModel(BaseModel):
     def delete_links(self, entity_id):
         pass
 
-    def __get_generate_datas(self, request, data):
+    def __get_generate_data(self, request, data):
         try:
             self.cursor.execute(request, data)
-            datas = self.cursor.fetchall()
+            records = self.cursor.fetchall()
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             self.cursor.execute('ROLLBACK')
             print(error)
-        return datas
+        return records
 
     def generate(self, number):
-        request = 'INSERT INTO "user"(name , honor , blacklist) SELECT MD5(random()::text), random(), (random()::int)::boolean FROM generate_series(1 , %s)'
+        request = 'INSERT INTO profiles(nickname, "date of registration", country, user_id) ' \
+                  'SELECT MD5(random()::text), timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - ' \
+                  'timestamp \'1-1-1\'), MD5(random()::text), RANDOM() * (SELECT MAX(user_id) FROM "users") ' \
+                  'FROM generate_series(1 , %s)'
         data = (number,)
         try:
             self.cursor.execute(request, data)

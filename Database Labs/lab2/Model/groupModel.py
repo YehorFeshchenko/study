@@ -118,11 +118,11 @@ class GroupModel(BaseModel):
             self.cursor.execute('ROLLBACK')
             print(error)
 
-    def generate(self, number):  # TODO
-        request = 'INSERT INTO "author"(name , date_of_first_publication , year_of_birth , year_of_death) ' \
-                  'SELECT MD5(random()::text), trunc(random()*%s)::int , timestamp \'1-1-1\' ' \
+    def generate(self, number):
+        request = 'INSERT INTO groups(name, "number of members", "date of creation") ' \
+                  'SELECT MD5(random()::text), trunc(random()*%s)::int, timestamp \'1-1-1\' ' \
                   '+ random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') FROM generate_series(1 , %s)'
-        data = (number, number, number)
+        data = (number, number)
         try:
             self.cursor.execute(request, data)
             self.conn.commit()
@@ -130,12 +130,53 @@ class GroupModel(BaseModel):
             self.cursor.execute('ROLLBACK')
             print(error)
 
-    def __get_generate_datas(self, request, data):  # TODO
+    def __get_generate_data(self, request, data):
         try:
             self.cursor.execute(request, data)
-            datas = self.cursor.fetchall()
+            records = self.cursor.fetchall()
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             self.cursor.execute('ROLLBACK')
             print(error)
-        return datas
+        return records
+
+    def find_not_empty_groups_filter_users(self):
+        request = 'SELECT * FROM "groups" WHERE "number of members" > 0 ORDER BY(SELECT COUNT(*) ' \
+                  '' \
+                  '' \
+                  'FROM "user_groups" WHERE "user_groups".group_id = "groups".group_id) ASC'
+        data = ()
+        groups = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request, data)
+            temp = self.cursor.fetchall()
+            finish = time.time()
+            print("\nExecution time: " + str(finish - start))
+            for item in temp:
+                groups.append(Group(item[0], item[1], item[2], item[3], item[4]))
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        return groups
+
+    def find_not_empty_group_filter_user_age(self, min_, max_):
+        request = 'SELECT "groups".group_id, "groups".name, "groups"."date of creation", ' \
+                  '"groups"."number of members", "users"."last name" ' \
+                  'FROM "groups" JOIN "user_groups" ON "user_groups".group_id = "groups".group_id ' \
+                  'JOIN "users" ON "user_groups".user_id = "users".user_id ' \
+                  'WHERE "users".age >= %s AND "users".age <= %s ORDER BY id ASC'
+        data = (min_, max_)
+        groups = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request, data)
+            records = self.cursor.fetchall()
+            finish = time.time()
+            print("\nExecution time: " + str(finish - start))
+            for item in records:
+                groups.append((item[0], item[1], item[2], item[3], item[4]))
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        return groups

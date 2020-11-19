@@ -45,11 +45,10 @@ class UserModel(BaseModel):
             return users
 
     def get_entity(self, entity_id):
-        request = 'SELECT * FROM users WHERE user_id = %s'
-        data = (entity_id,)
+        request = 'SELECT * FROM "users" WHERE user_id = %s'
         user = None
         try:
-            self.cursor.execute(request, data)
+            self.cursor.execute(request, (entity_id,))
             record = self.cursor.fetchone()
             user = User(record[0], record[1], record[2], record[3])
         except (Exception, psycopg2.DatabaseError) as error:
@@ -122,22 +121,77 @@ class UserModel(BaseModel):
             self.cursor.execute('ROLLBACK')
             print(error)
 
-    def __get_generate_datas(self, request, data):
+    def __get_generate_data(self, request, data):
         try:
             self.cursor.execute(request, data)
-            datas = self.cursor.fetchall()
+            records = self.cursor.fetchall()
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             self.cursor.execute('ROLLBACK')
             print(error)
-        return datas
+        return records
 
     def generate(self, number):
-        request = 'INSERT INTO "user"(name , honor , blacklist) SELECT MD5(random()::text), random(), (random()::int)::boolean FROM generate_series(1 , %s)'
-        data = (number,)
+        request = 'INSERT INTO users("first name", "last name", age) SELECT MD5(random()::text), MD5(random()::text),' \
+                  ' trunc(random()*%s)::int FROM generate_series(1 , %s)'
+        data = (number, number)
         try:
             self.cursor.execute(request, data)
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             self.cursor.execute('ROLLBACK')
             print(error)
+
+    def filter_from_id(self, min_, max_):
+        request = 'SELECT * FROM "users" WHERE "users".user_id >= %s AND "users".user_id <= %s ' \
+                  'ORDER BY(SELECT COUNT(*) FROM "profiles" WHERE "profiles".user_id = "users".user_id)'
+        data = (min_, max_)
+        users_list = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request, data)
+            users = self.cursor.fetchall()
+            finish = time.time()
+            print("\nExecution time: " + str(finish - start))
+            for item in users:
+                users_list.append(User(item[0], item[1], item[2], item[3]))
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        return users_list
+
+    def filter_from_age(self, min_, max_):
+        request = 'SELECT * FROM "users" WHERE "users".age >= %s AND "users".age <= %s ' \
+                  'ORDER BY(SELECT COUNT(*) FROM "profiles" WHERE "profiles".user_id = "users".user_id)'
+        data = (min_, max_)
+        users_list = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request, data)
+            users = self.cursor.fetchall()
+            finish = time.time()
+            print("\nExecution time: " + str(finish - start))
+            for item in users:
+                users_list.append(User(item[0], item[1], item[2], item[3]))
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        return users_list
+
+    def filter_from_desc(self, limit):
+        request = 'SELECT * FROM "users" ORDER BY(SELECT COUNT("profiles".profile_id) FROM "profiles" ' \
+                  'WHERE "profiles".user_id = "users".user_id), users."first name" DESC LIMIT %s'
+        data = (limit,)
+        users_list = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request, data)
+            users = self.cursor.fetchall()
+            finish = time.time()
+            print("\nExecution time: " + str(finish - start))
+            for item in users:
+                users_list.append(User(item[0], item[1], item[2], item[3]))
+        except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
+            print(error)
+        return users_list
