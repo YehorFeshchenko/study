@@ -33,7 +33,7 @@ class BaseModel(ABC):
             self.cursor.execute('ROLLBACK')
             print(error)
 
-    def add_entity(self , new_entity):
+    def add_entity(self, new_entity):
         try:
             self.session.add(new_entity)
             self.session.commit()

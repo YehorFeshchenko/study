@@ -253,7 +253,7 @@ class View:
                 continue
             else:
                 break
-        new_user = User(0, first_name, last_name, age)
+        new_user = User(first_name, last_name, age)
         return new_user
 
     @staticmethod
@@ -268,12 +268,12 @@ class View:
                 break
         while True:
             try:
-                date = datetime.datetime.strptime(input("Input date_of_creation(yyyy-mm-dd):\n"), '%Y-%m-%d')
+                d = datetime.datetime.strptime(input("Input date_of_creation(yyyy-mm-dd):\n"), '%Y-%m-%d')
                 break
             except:
                 print("Incorrect date format")
                 continue
-        new_group = Group(name, number, date)
+        new_group = Group(name, d, number)
         return new_group
 
     @staticmethod

@@ -9,8 +9,8 @@ Base = declarative_base()
 class User_groups(Base):
     __tablename__ = "user_groups"
     id = Column(Integer, primary_key=True, nullable=False)
-    group_id = Column(Integer, ForeignKey('group.group_id'), nullable=False)
-    user_id = Column(Integer, ForeignKey('user.user_id'), nullable=False)
+    group_id = Column(Integer, ForeignKey('groups.group_id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
 
     def __init__(self, group_id, user_id):
         self.group_id = group_id
