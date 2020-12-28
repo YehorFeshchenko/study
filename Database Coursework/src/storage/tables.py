@@ -10,9 +10,9 @@ class City(Base):
     id = Column(Integer, primary_key=True)
     api_city_id = Column(Integer, nullable=False)
     name = Column(Text, nullable=False)
-    children1 = relationship('weather')
-    children2 = relationship('ait_pollution')
-    children3 = relationship('forecast')
+    children1 = relationship('Weather')
+    children2 = relationship('AirPollution')
+    children3 = relationship('Forecast')
 
     def __init__(self, api_city_id, name):
         self.api_city_id = api_city_id
@@ -25,11 +25,11 @@ class Weather(Base):
     description = Column(Text, nullable=False)
     timestap = Column(Time, nullable=False)
     city_id = Column(Integer, ForeignKey('city.id'), nullable=False)
-    children1 = relationship('wind')
-    children2 = relationship('metrics')
-    children3 = relationship('clouds')
-    children4 = relationship('rain')
-    children5 = relationship('snow')
+    children1 = relationship('Wind')
+    children2 = relationship('Metrics')
+    children3 = relationship('Clouds')
+    children4 = relationship('Rain')
+    children5 = relationship('Snow')
 
     def __init__(self, description, timestap, city_id):
         self.description = description
@@ -129,7 +129,7 @@ class Forecast(Base):
     description = Column(Text, nullable=False)
     timestap = Column(Time, nullable=False)
     city_id = Column(Integer, ForeignKey('city.id'), nullable=False)
-    children = relationship('indicators')
+    children = relationship('Indicators')
 
     def __init__(self, description, timestap, city_id):
         self.city_id = city_id

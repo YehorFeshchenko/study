@@ -52,6 +52,9 @@ def get_forecast_response_json(city_):
     return res.json()
 
 
+global POLLUTION_CITY_ID
+
+
 def get_air_pollution_response_json(name, country_ab):
     location = get_city_list_from_name(name, country_ab)
     global POLLUTION_CITY_ID
@@ -61,49 +64,136 @@ def get_air_pollution_response_json(name, country_ab):
     return res.json()
 
 
+def insert_weather_by_country_abb(country_ab, max_count):
+    with open('cities/city_list/city.list.json', 'r', encoding='utf-8') as f:
+        cities = json.load(f)
+
+    count = 0
+    for city_ in cities:
+        if count == max_count or count == 100:
+            break
+        if city_['country'] == country_ab:
+            weather_list_ = get_current_weather_response_json(city_['name'])
+            found_ = check_city_found(weather_list_)
+            if found_ is False:
+                print('Error: ' + weather_list_['message'])
+                break
+            insert_weather_data(weather_list_, connection)
+            count += 1
+
+
+def insert_forecast_by_country_abb(country_ab, max_count):
+    with open('cities/city_list/city.list.json', 'r', encoding='utf-8') as f:
+        cities = json.load(f)
+
+    count = 0
+    for city_ in cities:
+        if count == max_count or count == 100:
+            break
+        if city_['country'] == country_ab:
+            forecast_list_ = get_forecast_response_json(city_['name'])
+            found_ = check_city_found(forecast_list_)
+            if found_ is False:
+                print('Error: ' + forecast_list_['message'])
+                continue
+            insert_forecast_data(forecast_list_, connection)
+            count += 1
+
+
+def insert_air_pollution_by_country_abb(country_ab, max_count):
+    with open('cities/city_list/city.list.json', 'r', encoding='utf-8') as f:
+        cities = json.load(f)
+
+    count = 0
+    for c in cities:
+        if count == max_count or count == 100:
+            break
+        if c['country'] == country_ab:
+            pollution_list_ = get_air_pollution_response_json(c['name'], country_ab)
+            if pollution_list_ == -1:
+                print('Error: can`t find city inputted')
+                continue
+            found_ = check_city_found(pollution_list_)
+            if found_ is False:
+                print('Error: ' + pollution_list_['message'])
+                continue
+            if pollution_list_ is None:
+                print('Error: city not found, check country and city')
+                continue
+            pollution_list_['id'] = POLLUTION_CITY_ID
+            insert_air_pollution_data(pollution_list_, connection)
+            count += 1
+
+
 while True:
-    city = input('Choose the city to get data about: ')
-    print('Choose what type of weather data you want to get:')
-    print('1) Current weather\n2) Weather forecast\n3) Air pollution')
-    options = input()
-    if options.isdigit():
+    choice = input('Single city/ many cities [s/m]: ')
+    if choice == 's':
+        city = input('Choose the city to get data about: ')
+        print('Choose what type of weather data you want to get:')
+        print('1) Current weather\n2) Weather forecast\n3) Air pollution\n')
+        options = input()
+        if options.isdigit():
+            if int(options) == 1:
+                weather_list = get_current_weather_response_json(city)
+                found = check_city_found(weather_list)
+                if found is False:
+                    print('Error: ' + weather_list['message'])
+                    break
+                insert_weather_data(weather_list, connection)
+            elif int(options) == 2:
+                forecast_list = get_forecast_response_json(city)
+                found = check_city_found(forecast_list)
+                if found is False:
+                    print('Error: ' + forecast_list['message'])
+                    break
+                insert_forecast_data(forecast_list, connection)
+            elif int(options) == 3:
+                country = input('Enter country ab: ')
+                pollution_list = get_air_pollution_response_json(city, country)
+                if pollution_list == -1:
+                    print('Error: can`t find city inputted')
+                    break
+                found = check_city_found(pollution_list)
+                if found is False:
+                    print('Error: ' + pollution_list['message'])
+                    break
+                if pollution_list is None:
+                    print('Error: city not found, check country and city')
+                    break
+                pollution_list['id'] = POLLUTION_CITY_ID
+                insert_air_pollution_data(pollution_list, connection)
+            else:
+                print('Incorrect choice')
+                continue
+        break
+    elif choice == 'm':
+        print('Choose what type of weather data you want to get:')
+        print('1) Current weather in cities by country abbreviation(up to 100)\n'
+              '2) Forecast in cities by country abbreviation(up to 100)\n'
+              '3) Air pollution data in cities by country abbreviation(up to 100)\n')
+        options = input()
         if int(options) == 1:
-            weather_list = get_current_weather_response_json(city)
-            found = check_city_found(weather_list)
-            if found is False:
-                print('Error: ' + weather_list['message'])
-                break
-            insert_weather_data(weather_list, connection)
+            country = input('Enter country ab: ')
+            max_count = input('How many cities: ')
+            insert_weather_by_country_abb(country, max_count)
+            break
         elif int(options) == 2:
-            forecast_list = get_forecast_response_json(city)
-            found = check_city_found(forecast_list)
-            if found is False:
-                print('Error: ' + forecast_list['message'])
-                break
-            insert_forecast_data(forecast_list, connection)
+            country = input('Enter country ab: ')
+            max_count = input('How many cities: ')
+            insert_forecast_by_country_abb(country, max_count)
+            break
         elif int(options) == 3:
             country = input('Enter country ab: ')
-            pollution_list = get_air_pollution_response_json(city, country)
-            if pollution_list == -1:
-                print('Error: can`t find city inputted')
-                break
-            found = check_city_found(pollution_list)
-            if found is False:
-                print('Error: ' + pollution_list['message'])
-                break
-            if pollution_list is None:
-                print('Error: city not found, check country and city')
-                break
-            pollution_list['id'] = POLLUTION_CITY_ID
-            insert_air_pollution_data(pollution_list, connection)
+            max_count = input('How many cities: ')
+            insert_air_pollution_by_country_abb(country, max_count)
+            break
         else:
             print('Incorrect choice')
             continue
-        print('Data generated')
-        break
     else:
         print('Incorrect choice')
-        continue
+
+print('Data generated!')
 
 if connection:
     connection.close()
