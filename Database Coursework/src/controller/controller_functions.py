@@ -13,7 +13,7 @@ def get_password():
 
 
 password = get_password()
-dbModel = DBModel('Coursework', 'postgres', password, 'localhost')
+dbModel = DBModel('Coursework', 'postgres', password, 'localhost:5432')
 PLOT_LABEL_FONT_SIZE = 14
 PLOT_MEANING_FONT_SIZE = 6
 

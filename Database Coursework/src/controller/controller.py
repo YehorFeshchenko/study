@@ -73,7 +73,7 @@ def menu():
             continue
         if option == 8:
             date_ = View.get_date()
-            error = get_cities_highest_pop(date_)
+            error = get_cities_highest_air_pollution(date_)
             if error is not None:
                 print("Error: " + error)
             continue
